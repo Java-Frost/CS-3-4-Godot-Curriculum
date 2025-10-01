@@ -3,6 +3,7 @@ class_name Player
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var label = $Label
 
 @export var move_speed: float = 200.0
 @export var maxHealth : int = 10
@@ -14,10 +15,12 @@ var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	label.hide()
 	print("Player is ready!")
 	# TODO: Add detailed character info display (Lesson 1)
 
 func _physics_process(delta):
+	label.text = "HP: " + str(health)
 	handle_movement()
 
 func handle_movement():
@@ -68,17 +71,23 @@ func collect_pickup(_type : String, _amount : int):
 # - attack()
 
 func change_health(_amount): 
+	label.show()
 	health += _amount
 	if health > maxHealth:
 		health = maxHealth
+		await get_tree().create_timer(0.5).timeout
+		label.hide()
 		
 	elif health < 1:
 		die()
 		
+		
 	print("Health: " + str(health))
+
 
 func die():
 	print("You died!")
+	get_tree().reload_current_scene()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

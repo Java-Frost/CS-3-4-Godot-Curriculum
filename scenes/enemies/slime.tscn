@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6gaa4kprawy0"]
+[gd_scene load_steps=12 format=3 uid="uid://c6gaa4kprawy0"]
 
-[ext_resource type="Script" uid="uid://biopq2aedkgwh" path="res://scripts/npc.gd" id="1_4h4y0"]
+[ext_resource type="Script" uid="uid://co5hnowm81a7y" path="res://scripts/enemies/enemy_base.gd" id="1_4h4y0"]
 [ext_resource type="Texture2D" uid="uid://barrcryhoe1ep" path="res://assets/Platformer Slimes v1.3/Ogre Slime Spritesheet.png" id="2_ahq63"]
 [ext_resource type="PackedScene" uid="uid://l7oauc6tswy3" path="res://scenes/enemies/detection_radius.tscn" id="3_b58ev"]
+[ext_resource type="PackedScene" uid="uid://br4eathtsjyfv" path="res://damage_radius.tscn" id="4_b58ev"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbebl"]
-size = Vector2(11, 10)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ankfk"]
+radius = 4.5
+height = 14.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h4y0"]
 atlas = ExtResource("2_ahq63")
@@ -52,11 +54,11 @@ animations = [{
 
 [node name="slime" type="CharacterBody2D"]
 script = ExtResource("1_4h4y0")
-move_points = Array[Vector2]([Vector2(0, 0), Vector2(0, 0)])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_rbebl")
+position = Vector2(0, 2.5)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_ankfk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uhx0m")
@@ -66,5 +68,8 @@ frame_progress = 0.10445527
 
 [node name="Detection Radius" parent="." instance=ExtResource("3_b58ev")]
 
+[node name="Damage Radius" parent="." instance=ExtResource("4_b58ev")]
+
 [connection signal="body_entered" from="Detection Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection Radius" to="." method="_on_detection_radius_body_exited"]
+[connection signal="body_entered" from="Damage Radius" to="." method="_on_damage_radius_body_entered"]

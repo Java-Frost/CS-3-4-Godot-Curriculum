@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name npc
 
-@onready var player: = %Player
+@onready var player = %Player
 
 @export var health : int = 10
-@export var speed : int = 200
+@export var speed : int = 100
 @export var is_hostile : bool = false
 @export var move_points : Array[Vector2] = []
 @export var move_point : int = 0
@@ -45,5 +45,4 @@ func movement(_delta):
 		move_point+=1
 		if move_point > move_points.size()-1:
 			move_point = 0
-	
 	pass

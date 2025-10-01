@@ -1,14 +1,15 @@
 extends npc
 
-@onready var sprite: Sprite2D = $Sprite2D
+class_name enemy
 
+@onready var sprite: Sprite2D = $Sprite2D
 
 
 
 
 func _ready() -> void:
 	super._ready()
-	player = Global.game_world.player
+	pass
 	
 
 func _physics_process(delta: float) -> void:
@@ -18,9 +19,15 @@ func _physics_process(delta: float) -> void:
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
 	super._on_detection_radius_body_entered(body)
-	pass # Replace with function body.
-
+	if body == player:
+		is_hostile = true
 
 func _on_detection_radius_body_exited(body: Node2D) -> void:
 	super._on_detection_radius_body_exited(body)
-	pass # Replace with function body.
+	if body == player:
+		is_hostile = false
+
+
+func _on_damage_radius_body_entered(body: Node2D) -> void:
+	if body == player:
+		body.change_health(-1)
