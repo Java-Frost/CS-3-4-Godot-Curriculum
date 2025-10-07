@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://br4eathtsjyfv" path="res://damage_radius.tscn" id="4_b58ev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ankfk"]
-radius = 4.5
-height = 14.0
+radius = 11.5
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h4y0"]
 atlas = ExtResource("2_ahq63")
@@ -52,15 +52,16 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="slime" type="CharacterBody2D"]
+[node name="slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_4h4y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 4.5)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_ankfk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uhx0m")
 animation = &"idle"
 autoplay = "idle"
@@ -69,6 +70,7 @@ frame_progress = 0.10445527
 [node name="Detection Radius" parent="." instance=ExtResource("3_b58ev")]
 
 [node name="Damage Radius" parent="." instance=ExtResource("4_b58ev")]
+position = Vector2(0, 3)
 
 [connection signal="body_entered" from="Detection Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection Radius" to="." method="_on_detection_radius_body_exited"]

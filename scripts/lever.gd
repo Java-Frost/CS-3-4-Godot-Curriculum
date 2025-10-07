@@ -1,6 +1,8 @@
 extends Area2D
 
 @onready var door = $"../Door"
+@onready var player = %Player
+@export var open : bool = false
 
 func play_animation(reverse: bool = false) -> void:
 	var speed: int
@@ -14,5 +16,12 @@ func play_animation(reverse: bool = false) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	door.set_is_open(true)
-	print("e")
+	if body == player:
+		if open == false:
+			door.set_is_open(false)
+			open = true
+			play_animation(true)
+		elif open == true:
+			door.set_is_open(true)
+			open = false
+			play_animation(false)

@@ -3,8 +3,7 @@ extends npc
 class_name enemy
 
 @onready var sprite: Sprite2D = $Sprite2D
-
-
+@onready var texture: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -14,7 +13,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	pass
+	if velocity.x > 0:
+		texture.flip_h = true
+	elif velocity.x < 0:
+		texture.flip_h = false
 
 
 func _on_detection_radius_body_entered(body: Node2D) -> void:
@@ -30,4 +32,4 @@ func _on_detection_radius_body_exited(body: Node2D) -> void:
 
 func _on_damage_radius_body_entered(body: Node2D) -> void:
 	if body == player:
-		body.change_health(-1)
+		body.change_health(-10)

@@ -53,7 +53,7 @@ func configure_pickup(_type : String, _label : String) -> bool:
 			amount = 5
 			return true
 		elif _label == "large":
-			amount = 100
+			amount = 10
 			return true
 		else: return false
 	else: return false

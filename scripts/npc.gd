@@ -35,6 +35,7 @@ func _on_detection_radius_body_exited(body: Node2D) -> void:
 
 
 func movement(_delta):
+	
 	if is_hostile:
 		target = player.position
 	else:
