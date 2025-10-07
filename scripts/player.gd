@@ -106,6 +106,7 @@ func change_health(_amount):
 		health = maxHealth
 	if health < 1:
 		is_attacking = true
+		health = 0
 		
 	label2.hide()
 	label3.hide()
