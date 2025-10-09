@@ -1,10 +1,11 @@
-[gd_scene load_steps=65 format=3 uid="uid://cqvpxnx2pwqhk"]
+[gd_scene load_steps=66 format=3 uid="uid://cqvpxnx2pwqhk"]
 
 [ext_resource type="Script" uid="uid://dbc6krbwjvop0" path="res://scripts/player.gd" id="1_4x8vn"]
 [ext_resource type="Texture2D" uid="uid://c1j65egvfiye4" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/idle.png" id="2_wn8rh"]
 [ext_resource type="Texture2D" uid="uid://bvj5le87hktbu" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/slash.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://bxia0b8oxxlb8" path="res://assets/lpc_male_animations_2025-09-04T20-28-14/standard/walk.png" id="3_vbpto"]
 [ext_resource type="Texture2D" uid="uid://bwd62n2s4k1j5" path="res://assets/point_light.webp" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://de5wjb3b0kjr3" path="res://Attack_Range.tscn" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(17, 40)
@@ -293,7 +294,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash_down",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -316,7 +317,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash_left",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -339,7 +340,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash_right",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -362,7 +363,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash_up",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -491,8 +492,12 @@ shape = SubResource("RectangleShape2D_dqkch")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_x4x15")
-animation = &"idle_forward"
+animation = &"slash_up"
 autoplay = "idle_forward"
+frame = 5
+frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("4_dqkch")
+
+[node name="Area2D" parent="." instance=ExtResource("6_tuyoq")]

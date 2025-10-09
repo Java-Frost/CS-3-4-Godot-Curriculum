@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6gaa4kprawy0"]
+[gd_scene load_steps=13 format=3 uid="uid://c6gaa4kprawy0"]
 
 [ext_resource type="Script" uid="uid://co5hnowm81a7y" path="res://scripts/enemies/enemy_base.gd" id="1_4h4y0"]
 [ext_resource type="Texture2D" uid="uid://barrcryhoe1ep" path="res://assets/Platformer Slimes v1.3/Ogre Slime Spritesheet.png" id="2_ahq63"]
@@ -52,6 +52,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b58ev"]
+radius = 28.01785
+
 [node name="slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_4h4y0")
 
@@ -72,6 +75,20 @@ frame_progress = 0.10445527
 [node name="Damage Radius" parent="." instance=ExtResource("4_b58ev")]
 position = Vector2(0, 3)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = 17.0
+offset_right = 39.0
+offset_bottom = 40.0
+text = "Health: 10"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_b58ev")
+
 [connection signal="body_entered" from="Detection Radius" to="." method="_on_detection_radius_body_entered"]
 [connection signal="body_exited" from="Detection Radius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="body_entered" from="Damage Radius" to="." method="_on_damage_radius_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

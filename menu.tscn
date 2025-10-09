@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbod6pyht7mgi"]
+
+[ext_resource type="Texture2D" uid="uid://udxnr5kddbr5" path="res://assets/2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://o21tql6g3xxf" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Texture2D" uid="uid://dddcdpi2j4qi0" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/keys/keys_1_1.png" id="2_ouk20"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nwoc"]
+atlas = ExtResource("1_lti8b")
+region = Rect2(48, 176, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ouk20"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nwoc")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mae5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ouk20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 269.32257
+offset_bottom = 138.0
+color = Color(0.4332657, 0.43326563, 0.43326563, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_right = 192.0
+offset_bottom = 23.0
+text = "Items For Sale:"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 35.0
+offset_right = 222.0
+offset_bottom = 66.0
+text = "Buy for $10"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 83.0
+offset_right = 222.0
+offset_bottom = 114.0
+text = "Buy for $50"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(81, 51)
+scale = Vector2(2.4687507, 2.4687507)
+sprite_frames = SubResource("SpriteFrames_ouk20")
+animation = &"new_animation"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(81.0625, 102.06248)
+scale = Vector2(2.757813, 2.757813)
+sprite_frames = SubResource("SpriteFrames_mae5d")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(137, 69)
+zoom = Vector2(5.54, 5.54)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
