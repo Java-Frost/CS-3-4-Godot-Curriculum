@@ -13,6 +13,7 @@ class_name Player
 @export var health : int = maxHealth
 @export var coins : int = 0
 @export var inventory : Array[String] = []
+@export var can_attack = true
 
 
 
@@ -20,6 +21,7 @@ var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	#get_tree().change_scene_to_file("res://inventory.tscn")
 	label.hide()
 	label2.hide()
 	label3.hide()
@@ -184,16 +186,17 @@ func attack(direction: Vector2):
 		facing = direction
 	
 	if Input.is_action_just_pressed("attack"):  #remove the 1 to enable attacking animation
-		is_attacking = true
-		if facing.y > 0:
-			animated_sprite.play("slash_down")
-		elif facing.y < 0:
-			animated_sprite.play("slash_up")
-		elif facing.x < 0:
-			animated_sprite.play("slash_left")
-			animated_sprite.flip_h = false
-		elif facing.x > 0:
-			animated_sprite.play("slash_right")
-			animated_sprite.flip_h = false
-	await animated_sprite.animation_finished
-	is_attacking = false
+		if can_attack == true:
+			is_attacking = true
+			if facing.y > 0:
+				animated_sprite.play("slash_down")
+			elif facing.y < 0:
+				animated_sprite.play("slash_up")
+			elif facing.x < 0:
+				animated_sprite.play("slash_left")
+				animated_sprite.flip_h = false
+			elif facing.x > 0:
+				animated_sprite.play("slash_right")
+				animated_sprite.flip_h = false
+		await animated_sprite.animation_finished
+		is_attacking = false

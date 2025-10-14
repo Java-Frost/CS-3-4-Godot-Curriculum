@@ -1,0 +1,201 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6lym4hjtl2rb"]
+
+[ext_resource type="Script" uid="uid://dk7yuf1w4xijo" path="res://inventory.gd" id="1_pohso"]
+[ext_resource type="PackedScene" uid="uid://367lrtqvo2ua" path="res://item.tscn" id="2_psafj"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pohso")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(136, 71)
+zoom = Vector2(4.46, 4.46)
+
+[node name="Backround" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 269.32257
+offset_bottom = 138.0
+color = Color(0.4332657, 0.43326563, 0.43326563, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 177.0
+offset_bottom = 23.0
+text = "-Inventory-"
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 28.0
+offset_right = 252.0
+offset_bottom = 127.0
+columns = 10
+
+[node name="Panel" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel7" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel9" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel10" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel11" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel12" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel13" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel14" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel15" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel16" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel17" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel18" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel19" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel20" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel21" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel22" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel23" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel24" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel25" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel26" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel27" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel28" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel29" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel30" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel31" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel32" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel33" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel34" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel35" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel36" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel37" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel38" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel39" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Panel40" type="Panel" parent="Grid"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="Item" parent="." instance=ExtResource("2_psafj")]
+position = Vector2(26, 38)
