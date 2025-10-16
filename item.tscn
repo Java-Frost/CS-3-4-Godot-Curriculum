@@ -45,6 +45,11 @@ animations = [{
 "name": &"gold_key",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_lndve")
@@ -86,3 +91,5 @@ offset_top = -14.0
 offset_right = 16.0
 theme_override_font_sizes/font_size = 10
 text = "1"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

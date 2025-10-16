@@ -21,7 +21,7 @@ var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
-	#get_tree().change_scene_to_file("res://inventory.tscn")
+	get_tree().change_scene_to_file("res://inventory.tscn")
 	label.hide()
 	label2.hide()
 	label3.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=17 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dbod6pyht7mgi" path="res://menu.tscn" id="11_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c6gaa4kprawy0" path="res://scenes/enemies/slime.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://blj4kcv344ana" path="res://Key.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://b6lym4hjtl2rb" path="res://inventory.tscn" id="12_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bhad5kjkjga42" path="res://merchant.tscn" id="13_trceg"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
@@ -107,6 +108,11 @@ offset_right = -1104.9929
 offset_bottom = -607.0
 scale = Vector2(5.503, 5.503)
 metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" parent="UI" instance=ExtResource("12_jkv2x")]
+offset_right = -1000.421
+offset_bottom = -594.0
+scale = Vector2(5.58, 5.58)
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-496, 36)
