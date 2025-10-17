@@ -1,27 +1,27 @@
 extends CharacterBody2D
 class_name Player
 
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label = $Label
 @onready var label2 = $Label2
 @onready var label3 = $Label3
+@onready var inv = $"../UI/Inventory"
 
-@export var is_attacking: bool = false
+@export var is_attacking: bool = true
 @export var move_speed: float = 200.0
 @export var maxHealth : int = 50
 @export var health : int = maxHealth
 @export var coins : int = 0
 @export var inventory : Array[String] = []
-@export var can_attack = true
-
+@export var can_attack = false
+@export var viewing_inv = true
 
 
 var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
-	get_tree().change_scene_to_file("res://inventory.tscn")
+	#get_tree().change_scene_to_file("res://inventory.tscn")
 	label.hide()
 	label2.hide()
 	label3.hide()
@@ -133,15 +133,20 @@ func _input(event: InputEvent) -> void:
 
 func get_item(item : String):
 	inventory.append(item)
-	var list = []
+	var next_slot = -1
 	for thing in inventory:
-		list.append("-" + thing)
-	label2.text = "Inventory\n" + "\n".join(list)
-	label.hide()
-	label3.hide()
-	label2.show()
-	await get_tree().create_timer(1).timeout
-	label2.hide()
+		next_slot = next_slot + 1
+		print(next_slot)
+	inv.add_item_to_slot(next_slot, "gold_key", "1")
+	#var list = []
+	#for thing in inventory:
+		#list.append("-" + thing)
+	#label2.text = "Inventory\n" + "\n".join(list)
+	#label.hide()
+	#label3.hide()
+	#label2.show()
+	#await get_tree().create_timer(1).timeout
+	#label2.hide()
 
 
 func remove_item(item: String):
@@ -153,11 +158,17 @@ func remove_item(item: String):
 
 func view_inventory():
 	if Input.is_action_just_pressed("Inventory"):
-		label2.show()
-		label.hide()
-		label3.hide()
-	if Input.is_action_just_released("Inventory"):
-		label2.hide()
+		if viewing_inv == false:
+			animated_sprite.play("idle_forward")
+			inv.show()
+			is_attacking = true
+			can_attack = false
+			viewing_inv = true
+		elif viewing_inv == true:
+			inv.hide()
+			is_attacking = false
+			can_attack = true
+			viewing_inv = false
 
 func view_health():
 	if Input.is_action_just_pressed("Health"):

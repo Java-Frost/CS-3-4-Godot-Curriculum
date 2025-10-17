@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6lym4hjtl2rb"]
+[gd_scene load_steps=2 format=3 uid="uid://b6lym4hjtl2rb"]
 
 [ext_resource type="Script" uid="uid://dk7yuf1w4xijo" path="res://inventory.gd" id="1_pohso"]
-[ext_resource type="PackedScene" uid="uid://367lrtqvo2ua" path="res://item.tscn" id="2_psafj"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -19,10 +18,10 @@ zoom = Vector2(4.46, 4.46)
 
 [node name="Backround" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 269.32257
+offset_right = 269.323
 offset_bottom = 138.0
 mouse_filter = 2
-color = Color(0.4332657, 0.43326563, 0.43326563, 1)
+color = Color(0.431373, 0.431373, 0.431373, 0.768627)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -238,9 +237,3 @@ mouse_filter = 1
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 mouse_filter = 1
-
-[node name="Item" parent="." instance=ExtResource("2_psafj")]
-position = Vector2(26, 38)
-
-[connection signal="input_event" from="Item" to="." method="_on_item_input_event"]
-[connection signal="mouse_entered" from="Item" to="." method="_on_item_mouse_entered"]

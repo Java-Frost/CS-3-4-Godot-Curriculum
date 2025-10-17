@@ -45,11 +45,6 @@ animations = [{
 "name": &"gold_key",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_lndve")
@@ -83,7 +78,7 @@ shape = SubResource("RectangleShape2D_hgbgr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c51qo")
-animation = &"gold_key"
+animation = &"blue_flask"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 4.0

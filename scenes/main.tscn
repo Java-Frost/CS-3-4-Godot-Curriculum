@@ -28,7 +28,7 @@ script = ExtResource("2_3k9wy")
 environment = SubResource("Environment_jyhfs")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.103743605, 0.103743516, 0.103743516, 1)
+color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="Tilemap" type="Node2D" parent="."]
 scale = Vector2(2, 2)
@@ -88,31 +88,32 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -643.0
-offset_top = -297.0
-offset_right = -721.0
-offset_bottom = -371.0
+offset_right = -78.0
+offset_bottom = -74.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Menu" parent="UI" instance=ExtResource("11_a8y0u")]
 visible = false
 anchors_preset = -1
-anchor_left = 0.7664007
-anchor_top = 0.79605263
-anchor_right = 0.9765625
-anchor_bottom = 0.97763157
-offset_left = -1104.9929
-offset_top = -607.0
-offset_right = -1104.9929
-offset_bottom = -607.0
+anchor_left = 0.766401
+anchor_top = 0.796053
+anchor_right = 0.999908
+anchor_bottom = 1.00902
+offset_left = -1098.89
+offset_top = -523.842
+offset_right = -1098.89
+offset_bottom = -523.842
 scale = Vector2(5.503, 5.503)
 metadata/_edit_use_anchors_ = true
 
 [node name="Inventory" parent="UI" instance=ExtResource("12_jkv2x")]
-offset_right = -1000.421
-offset_bottom = -594.0
-scale = Vector2(5.58, 5.58)
+anchors_preset = -1
+offset_left = 169.0
+offset_top = 97.0
+offset_right = -714.0
+offset_bottom = -413.0
+scale = Vector2(3, 3)
 
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-496, 36)
@@ -123,3 +124,9 @@ position = Vector2(260, 196)
 
 [node name="Area2D" parent="." instance=ExtResource("12_eb6dy")]
 position = Vector2(55, -319)
+
+[node name="Area2D2" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(102, -18)
+
+[node name="Area2D3" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(113, 43)
