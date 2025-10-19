@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://de5wjb3b0kjr3" path="res://Attack_Range.tscn" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(17, 40)
+size = Vector2(17, 43)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yt4gq"]
 atlas = ExtResource("2_wn8rh")
@@ -484,7 +484,7 @@ offset_right = 25.0
 offset_bottom = 54.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 1)
+position = Vector2(-1.5, -0.5)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -492,10 +492,8 @@ shape = SubResource("RectangleShape2D_dqkch")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_x4x15")
-animation = &"slash_up"
+animation = &"idle_forward"
 autoplay = "idle_forward"
-frame = 5
-frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("4_dqkch")

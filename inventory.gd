@@ -4,8 +4,16 @@ extends Control
 @onready var grid = $Grid
 @onready var inv = $"."
 
+func _ready() -> void:
+	show()
+	await get_tree().create_timer(1).timeout
+	hide()
+	player.is_attacking = false
+	player.can_attack = true
+	player.viewing_inv = false
 
-func add_item_to_slot(slot_index: int, name: String, ammount: String):
+
+func add_item_to_slot(slot_index: int, name: String):#, ammount: String):
 	var item = load("res://item.tscn").instantiate()
 	var slot = grid.get_child(slot_index)
 	var r = slot.get_global_rect()
@@ -19,4 +27,13 @@ func add_item_to_slot(slot_index: int, name: String, ammount: String):
 		parent_scale = Vector2(1, 1)
 	item.position = (global_vec / parent_scale)
 	item.set_item(name)
-	item.item_ammount(ammount)
+	#item.item_ammount(ammount)
+
+func remove_item_from_slot(name: String):
+	if inv == null:
+		return false
+	for child in inv.get_children():
+		var anim := child.get_node_or_null("AnimatedSprite2D")
+		if anim and anim.animation == name:
+			child.queue_free()
+			return true

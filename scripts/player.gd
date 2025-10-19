@@ -6,8 +6,12 @@ class_name Player
 @onready var label2 = $Label2
 @onready var label3 = $Label3
 @onready var inv = $"../UI/Inventory"
+@onready var health_label = $"../UI/Inventory/health"
+@onready var coins_label = $"../UI/Inventory/coins"
+
 
 @export var is_attacking: bool = true
+@export var can_view_inventory = true
 @export var move_speed: float = 200.0
 @export var maxHealth : int = 50
 @export var health : int = maxHealth
@@ -15,6 +19,9 @@ class_name Player
 @export var inventory : Array[String] = []
 @export var can_attack = false
 @export var viewing_inv = true
+@export var current_slot = -1
+@export var is_breaking = false
+
 
 
 var facing: Vector2 = Vector2.ZERO
@@ -32,6 +39,8 @@ func _ready():
 func _physics_process(delta):
 	label.text = "HP: " + str(health)
 	label3.text = "Coins: " + str(coins)
+	health_label.text = "HP: " + str(health)
+	coins_label.text = "Coins: " + str(coins)
 	view_inventory()
 	view_coins()
 	view_health()
@@ -136,39 +145,32 @@ func get_item(item : String):
 	var next_slot = -1
 	for thing in inventory:
 		next_slot = next_slot + 1
-		print(next_slot)
-	inv.add_item_to_slot(next_slot, "gold_key", "1")
-	#var list = []
-	#for thing in inventory:
-		#list.append("-" + thing)
-	#label2.text = "Inventory\n" + "\n".join(list)
-	#label.hide()
-	#label3.hide()
-	#label2.show()
-	#await get_tree().create_timer(1).timeout
-	#label2.hide()
+	current_slot = next_slot
+	inv.add_item_to_slot(next_slot, item)
 
 
 func remove_item(item: String):
 	inventory.erase(item)
-	var list = []
-	for thing in inventory:
-		list.append("-" + thing)
-	label2.text = "Inventory\n" + "\n".join(list)
+	inv.remove_item_from_slot(item)
+
+
+func remove_item_silent(item: String):
+	inventory.erase(item)
 
 func view_inventory():
 	if Input.is_action_just_pressed("Inventory"):
-		if viewing_inv == false:
-			animated_sprite.play("idle_forward")
-			inv.show()
-			is_attacking = true
-			can_attack = false
-			viewing_inv = true
-		elif viewing_inv == true:
-			inv.hide()
-			is_attacking = false
-			can_attack = true
-			viewing_inv = false
+		if can_view_inventory == true:
+			if viewing_inv == false:
+				animated_sprite.play("idle_forward")
+				inv.show()
+				is_attacking = true
+				can_attack = false
+				viewing_inv = true
+			elif viewing_inv == true:
+				inv.hide()
+				is_attacking = false
+				can_attack = true
+				viewing_inv = false
 
 func view_health():
 	if Input.is_action_just_pressed("Health"):
@@ -189,8 +191,6 @@ func view_coins():
 
 
 func attack(direction: Vector2):
-	
-	
 	if direction == Vector2.ZERO: 
 		pass
 	else:
@@ -199,6 +199,7 @@ func attack(direction: Vector2):
 	if Input.is_action_just_pressed("attack"):  #remove the 1 to enable attacking animation
 		if can_attack == true:
 			is_attacking = true
+			is_breaking = true
 			if facing.y > 0:
 				animated_sprite.play("slash_down")
 			elif facing.y < 0:
@@ -211,3 +212,4 @@ func attack(direction: Vector2):
 				animated_sprite.flip_h = false
 		await animated_sprite.animation_finished
 		is_attacking = false
+		is_breaking = false

@@ -5,5 +5,6 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body == player:
-		queue_free()
-		player.get_item("Key")
+		$AnimationPlayer.play("disappear")
+		player.get_item("gold_key")
+		

@@ -4,6 +4,11 @@ extends Area2D
 @onready var player = %Player
 @export var open : bool = false
 
+
+
+
+
+
 func play_animation(reverse: bool = false) -> void:
 	var speed: int
 	if reverse:

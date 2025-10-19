@@ -1,8 +1,7 @@
 extends AnimatableBody2D
 
 
-func set_is_open(is_open: bool) -> void:
-	print("TEST123")
+func set_is_open(is_open: bool):
 	if is_open:
 		print("open")
 		$AnimatedSprite2D.frame = 0

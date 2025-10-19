@@ -43,6 +43,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_25bge")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 64.0
 offset_top = -87.0
 offset_right = 109.0

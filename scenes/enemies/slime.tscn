@@ -53,14 +53,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b58ev"]
-radius = 28.01785
+radius = 28.0179
 
 [node name="slime" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_4h4y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
-rotation = -1.5707964
+rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ankfk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -68,7 +68,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_uhx0m")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.10445527
+frame_progress = 0.104455
 
 [node name="Detection Radius" parent="." instance=ExtResource("3_b58ev")]
 

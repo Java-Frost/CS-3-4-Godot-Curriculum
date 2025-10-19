@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmtdysj617bv6"]
+
+[ext_resource type="Script" uid="uid://sdx8ey6ql440" path="res://boss_health.gd" id="1_lofsf"]
+[ext_resource type="Texture2D" uid="uid://b84ybbdlgqjws" path="res://New Piskel (1).png" id="2_3lkwg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28i7p"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 0, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjhrh"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 32, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhvax"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 64, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgh08"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 96, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwx86"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 128, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kynj3"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 160, 192, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_54slo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28i7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjhrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhvax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgh08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwx86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kynj3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss_Health" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lofsf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.8147e-06, 9.53674e-07)
+scale = Vector2(2.77393, 2.77393)
+sprite_frames = SubResource("SpriteFrames_54slo")

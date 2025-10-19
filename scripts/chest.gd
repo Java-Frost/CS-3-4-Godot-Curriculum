@@ -4,6 +4,7 @@ extends Area2D
 @onready var player = %Player
 @export var type:String = "chest"
 @export var amount:int = 50
+@export var opening = false
 
 
 
@@ -19,16 +20,19 @@ func collect_chest() -> void:
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 	player.collect_pickup(type, amount)
+	opening = true
 
 
 func _on_body_entered(body):
 	if body == player:
-		if "Key" in body.inventory:
-			print("opening!")
-			body.remove_item("Key")
-			collect_chest()
-		else:
-			label.show()
+		if opening == false:
+			if "gold_key" in body.inventory:
+				opening = true
+				print("opening!")
+				body.remove_item("gold_key")
+				collect_chest()
+			else:
+				label.show()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == player:
