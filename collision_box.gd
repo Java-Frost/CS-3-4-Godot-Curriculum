@@ -8,3 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if body == player:
 		health_bar.show()
 		door2.set_is_open(false)
+		queue_free()

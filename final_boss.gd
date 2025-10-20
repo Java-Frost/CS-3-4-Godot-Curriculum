@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var anim = $head
 @onready var player = %Player
 
+
+
 func _ready() -> void:
 	anim.play("idle")
 
@@ -13,3 +15,10 @@ func _process(delta: float) -> void:
 		#anim.flip_h = false
 	#else:
 		#anim.flip_h = true
+
+func die():
+	queue_free()
+
+
+func attack():
+	pass

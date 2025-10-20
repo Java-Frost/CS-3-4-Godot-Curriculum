@@ -3,50 +3,50 @@
 [ext_resource type="Script" uid="uid://sdx8ey6ql440" path="res://boss_health.gd" id="1_lofsf"]
 [ext_resource type="Texture2D" uid="uid://b84ybbdlgqjws" path="res://New Piskel (1).png" id="2_3lkwg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_28i7p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kynj3"]
 atlas = ExtResource("2_3lkwg")
-region = Rect2(0, 0, 192, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjhrh"]
-atlas = ExtResource("2_3lkwg")
-region = Rect2(0, 32, 192, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vhvax"]
-atlas = ExtResource("2_3lkwg")
-region = Rect2(0, 64, 192, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bgh08"]
-atlas = ExtResource("2_3lkwg")
-region = Rect2(0, 96, 192, 32)
+region = Rect2(0, 160, 192, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwx86"]
 atlas = ExtResource("2_3lkwg")
 region = Rect2(0, 128, 192, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kynj3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgh08"]
 atlas = ExtResource("2_3lkwg")
-region = Rect2(0, 160, 192, 32)
+region = Rect2(0, 96, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhvax"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 64, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjhrh"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 32, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28i7p"]
+atlas = ExtResource("2_3lkwg")
+region = Rect2(0, 0, 192, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_54slo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_28i7p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jjhrh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vhvax")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bgh08")
+"texture": SubResource("AtlasTexture_kynj3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qwx86")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kynj3")
+"texture": SubResource("AtlasTexture_bgh08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhvax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjhrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28i7p")
 }],
 "loop": false,
 "name": &"default",

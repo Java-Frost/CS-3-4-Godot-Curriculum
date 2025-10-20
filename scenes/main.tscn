@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=23 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -15,10 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://dbod6pyht7mgi" path="res://menu.tscn" id="11_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c6gaa4kprawy0" path="res://scenes/enemies/slime.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://blj4kcv344ana" path="res://Key.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://b5k6j62uuqteo" path="res://heart.tscn" id="12_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b6lym4hjtl2rb" path="res://inventory.tscn" id="12_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bhad5kjkjga42" path="res://merchant.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://dmtdysj617bv6" path="res://boss_health.tscn" id="14_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://qx17xpxjwvf4" path="res://final_boss.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://cl11a7eg2e0uh" path="res://projectile.tscn" id="21_yc10j"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -70,10 +72,10 @@ position = Vector2(-128.5, -377)
 position = Vector2(-336.5, -377)
 
 [node name="Torch8" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(-296.5, -489.5)
+position = Vector2(-296.5, -487.5)
 
 [node name="Torch9" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
-position = Vector2(-169, -489.5)
+position = Vector2(-169, -487.5)
 
 [node name="Spike" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
 position = Vector2(88, 8)
@@ -105,8 +107,24 @@ position = Vector2(-232.5, -56)
 [node name="Collision box" parent="Tilemap/StuffOnTop" instance=ExtResource("11_0ld40")]
 position = Vector2(-230, -183.5)
 
+[node name="heart" parent="Tilemap/StuffOnTop" instance=ExtResource("12_gqmmt")]
+position = Vector2(-315.5, -414)
+
+[node name="heart2" parent="Tilemap/StuffOnTop" instance=ExtResource("12_gqmmt")]
+position = Vector2(-150, -417)
+
+[node name="heart3" parent="Tilemap/StuffOnTop" instance=ExtResource("12_gqmmt")]
+position = Vector2(-170, -329)
+
+[node name="heart4" parent="Tilemap/StuffOnTop" instance=ExtResource("12_gqmmt")]
+position = Vector2(-298, -329)
+
+[node name="heart5" parent="Tilemap/StuffOnTop" instance=ExtResource("12_gqmmt")]
+position = Vector2(-234, -461)
+
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 unique_name_in_owner = true
+position = Vector2(-387, -633)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -180,3 +198,6 @@ position = Vector2(55, -319)
 
 [node name="Final Boss" parent="." instance=ExtResource("17_muem4")]
 position = Vector2(-467, -776)
+
+[node name="projectile" parent="." instance=ExtResource("21_yc10j")]
+position = Vector2(-1022, -855)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl11a7eg2e0uh"]
+
+[ext_resource type="Texture2D" uid="uid://c67bwbrwtbaro" path="res://S8KMWh-1.png.png" id="1_a85iw"]
+[ext_resource type="Script" uid="uid://dpnefkok6uee7" path="res://projectile.gd" id="1_qxf0c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dl81w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a85iw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5rgpn"]
+radius = 8.0
+
+[node name="projectile" type="CharacterBody2D"]
+script = ExtResource("1_qxf0c")
+
+[node name="projectile" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectile"]
+scale = Vector2(0.38690475, 0.38690475)
+sprite_frames = SubResource("SpriteFrames_dl81w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile"]
+shape = SubResource("CircleShape2D_5rgpn")
+
+[connection signal="body_entered" from="projectile" to="." method="_on_projectile_body_entered"]
