@@ -17,7 +17,7 @@ func take_damage():
 
 func check_if_dead():
 	if health > 0:
-		boss.attack()
+		boss.increase_speed()
 	else:
 		die()
 

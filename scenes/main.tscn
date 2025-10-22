@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bhad5kjkjga42" path="res://merchant.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://dmtdysj617bv6" path="res://boss_health.tscn" id="14_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://qx17xpxjwvf4" path="res://final_boss.tscn" id="17_muem4"]
-[ext_resource type="PackedScene" uid="uid://cl11a7eg2e0uh" path="res://projectile.tscn" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://gsac3evc2op7" path="res://area_2d1.tscn" id="21_yc10j"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -28,6 +28,7 @@ ambient_light_source = 1
 reflected_light_source = 1
 
 [node name="Main" type="Node2D"]
+position = Vector2(23, -218)
 script = ExtResource("2_3k9wy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -124,7 +125,7 @@ position = Vector2(-234, -461)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 unique_name_in_owner = true
-position = Vector2(-387, -633)
+position = Vector2(-462, -265)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -199,5 +200,5 @@ position = Vector2(55, -319)
 [node name="Final Boss" parent="." instance=ExtResource("17_muem4")]
 position = Vector2(-467, -776)
 
-[node name="projectile" parent="." instance=ExtResource("21_yc10j")]
-position = Vector2(-1022, -855)
+[node name="Area2D2" parent="." instance=ExtResource("21_yc10j")]
+position = Vector2(-463, -602)

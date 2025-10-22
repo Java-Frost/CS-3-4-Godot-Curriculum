@@ -196,7 +196,7 @@ func attack(direction: Vector2):
 	else:
 		facing = direction
 	
-	if Input.is_action_just_pressed("attack"):  #remove the 1 to enable attacking animation
+	if Input.is_action_just_pressed("attack"):
 		if can_attack == true:
 			is_attacking = true
 			is_breaking = true
