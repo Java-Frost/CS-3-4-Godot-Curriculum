@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5k6j62uuqteo"]
+[gd_scene load_steps=19 format=3 uid="uid://b5k6j62uuqteo"]
 
 [ext_resource type="Texture2D" uid="uid://cxvx31imrnxfm" path="res://New Piskel.png" id="1_7p8dj"]
 [ext_resource type="Script" uid="uid://buddyagsmgjwo" path="res://heart.gd" id="1_pembh"]
+[ext_resource type="Texture2D" uid="uid://bwd62n2s4k1j5" path="res://assets/point_light.webp" id="2_bjxl8"]
 [ext_resource type="Texture2D" uid="uid://b43r1pyuaweud" path="res://New Piskel-1.png.png" id="2_pembh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwk4n"]
@@ -86,15 +87,89 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_pembh"]
+resource_name = "pop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_bjxl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjxl8"]
+_data = {
+&"RESET": SubResource("Animation_bjxl8"),
+&"pop": SubResource("Animation_pembh")
+}
+
 [node name="heart" type="Area2D"]
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_pembh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.08, 0.08)
+color = Color(1, 0.231431, 0.694261, 1)
+shadow_enabled = true
+texture = ExtResource("2_bjxl8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kwk4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(-9.09495e-13, 3)
 sprite_frames = SubResource("SpriteFrames_2xsxu")
 animation = &"idle"
+frame_progress = 0.112324
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bjxl8")
+}
+speed_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

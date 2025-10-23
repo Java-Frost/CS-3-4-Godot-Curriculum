@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var menu = $"../UI/Menu"
 @onready var label = $Label
 @onready var inv = $"../UI/Inventory"
+@onready var secuess = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	label.hide()

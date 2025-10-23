@@ -3,3 +3,5 @@
 @tool
 
 extends pickup
+
+@onready var main2 = $"../../.."

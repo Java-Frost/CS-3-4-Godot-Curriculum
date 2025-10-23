@@ -14,11 +14,13 @@ func set_is_open(is_open: bool):
 		print("open")
 		open = true
 		$AnimatedSprite2D.frame = 2
+		$"../../..".door_sound()
 		collision_layer = 2
 		$LightOccluder2D.visible = false
 	else:
 		print("closed")
 		$AnimatedSprite2D.frame = 5
+		$"../../..".door_sound()
 		collision_layer = 5
 		$LightOccluder2D.visible = true
 

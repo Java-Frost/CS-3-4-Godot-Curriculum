@@ -11,8 +11,8 @@
 radius = 73.0616
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75bcn"]
-radius = 50.105114
-height = 100.21023
+radius = 50.105
+height = 100.21
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rxsrt"]
 animations = [{
@@ -48,7 +48,7 @@ texture = ExtResource("5_n0uwk")
 shape = SubResource("CircleShape2D_il0sp")
 
 [node name="Final Boss" type="CollisionShape2D" parent="."]
-position = Vector2(-4.2351647e-22, 7.1054274e-15)
+position = Vector2(-4.23516e-22, 7.10543e-15)
 rotation = -0.523599
 shape = SubResource("CapsuleShape2D_75bcn")
 

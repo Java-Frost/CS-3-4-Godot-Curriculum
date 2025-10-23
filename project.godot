@@ -12,16 +12,17 @@ config_version=5
 
 config/name="cs_3-4_starter_project"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
+SpawnPoint="*res://scenes/spawn_point.gd"
 
 [display]
 
-window/size/mode=4
+window/size/mode=1
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
@@ -30,6 +31,7 @@ window/stretch/mode="viewport"
 
 enemy=""
 tile=""
+proj=""
 
 [input]
 

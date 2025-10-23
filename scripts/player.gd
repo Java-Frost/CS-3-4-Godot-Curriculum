@@ -8,8 +8,14 @@ class_name Player
 @onready var inv = $"../UI/Inventory"
 @onready var health_label = $"../UI/Inventory/health"
 @onready var coins_label = $"../UI/Inventory/coins"
+@onready var main = $".."
+@onready var hit = false
+@onready var slime = $"../slime"
+@onready var key = $"../Area2D"
+@onready var coin = $"../Tilemap/StuffOnTop/Coin"
+@onready var potion = $"../Tilemap/StuffOnTop/HealthPotion"
 
-
+@export var checkpoint = false
 @export var is_attacking: bool = true
 @export var can_view_inventory = true
 @export var move_speed: float = 200.0
@@ -28,6 +34,13 @@ var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	position = SpawnPoint.spawn
+	if SpawnPoint.spawn != Vector2(0,0):
+		slime.queue_free()
+		key.queue_free()
+		potion.queue_free()
+		coin.queue_free()
+		coins = SpawnPoint.coins
 	#get_tree().change_scene_to_file("res://inventory.tscn")
 	label.hide()
 	label2.hide()
@@ -130,14 +143,19 @@ func change_health(_amount):
 		pass
 	
 func die():
-	print("You died!")
-	get_tree().reload_current_scene()
-	is_attacking = false
+	if checkpoint == false:
+		print("You died!")
+		get_tree().reload_current_scene()
+		is_attacking = false
+	else:
+		SpawnPoint.spawn = Vector2(-462.0, -544.3321)
+		SpawnPoint.coins = coins
+		is_attacking = false
+		get_tree().reload_current_scene()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit(0)
-
 
 
 func get_item(item : String):
@@ -210,6 +228,16 @@ func attack(direction: Vector2):
 			elif facing.x > 0:
 				animated_sprite.play("slash_right")
 				animated_sprite.flip_h = false
+			if hit == false:
+				main.woosh_sound()
 		await animated_sprite.animation_finished
 		is_attacking = false
 		is_breaking = false
+
+
+func hit_sfx():
+	main.punch_sound()
+
+
+func set_spawn():
+	checkpoint = true

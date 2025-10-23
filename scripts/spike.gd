@@ -20,6 +20,7 @@ func _on_body_entered(body):
 		
 		if body.has_method("change_health"):
 			body.change_health(damage_amount)
+			body.hit_sfx()
 		
 		
 		# Play the animation of the spikes resetting

@@ -35,12 +35,14 @@ func _on_detection_radius_body_exited(body: Node2D) -> void:
 
 func _on_damage_radius_body_entered(body: Node2D) -> void:
 	if body == player:
+		player.hit_sfx()
 		body.change_health(-10)
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body == player:
 		if body.is_attacking == true:
+			player.hit_sfx()
 			health = health - 5
 			label.text = "HP: " + str(health)
 			label.show()

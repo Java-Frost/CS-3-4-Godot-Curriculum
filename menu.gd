@@ -23,6 +23,7 @@ func _on_button_pressed() -> void:
 		player.coins = player.coins - 10
 		hide()
 		merch._unbind_player(player)
+		merch.secuess.play()
 	else:
 		hide()
 		merch._unbind_player(player)
@@ -38,6 +39,7 @@ func _on_button_2_pressed() -> void:
 		player.coins = player.coins - 50
 		hide()
 		merch._unbind_player(player)
+		merch.secuess.play()
 	else:
 		hide()
 		merch._unbind_player(player)

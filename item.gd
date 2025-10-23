@@ -94,6 +94,7 @@ func use_item():
 		await get_tree().create_timer(0.6).timeout
 		light.hide()
 		inv.hide()
+		$"../../..".warp_sound()
 		player.remove_item_silent("blue_flask")
 		player.is_attacking = false
 		player.can_attack = true
@@ -104,6 +105,7 @@ func use_item():
 		await get_tree().create_timer(0.6).timeout
 		player.change_health(20)
 		inv.hide()
+		$"../../..".potion_sound()
 		player.remove_item_silent("red_flask")
 		player.is_attacking = false
 		player.can_attack = true

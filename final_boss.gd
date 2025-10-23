@@ -16,6 +16,7 @@ extends StaticBody2D
 @export var coliding = false
 @export var current_heart = 1
 @export var waiting_for_hit = false
+@export var max_offset: float = 20.0
 
 func _ready() -> void:
 	anim.play("idle")
@@ -32,9 +33,11 @@ func die():
 	queue_free()
 
 func increase_speed():
-	timer.wait_time = timer.wait_time - 0.2
+	timer.wait_time = timer.wait_time - 0.15
+	max_offset = max_offset + 20
 
 func attack():
+	main.fire_woosh()
 	var ball = load("res://projectile.tscn").instantiate()
 	ball.position = position
 	main.add_child(ball)
@@ -57,6 +60,7 @@ func _on_colision_body_exited(body: Node2D) -> void:
 func take_damage():
 	if coliding == true:
 		if player.is_attacking == true:
+			player.hit_sfx()
 			if waiting_for_hit == false:
 				spawn_heart()
 				waiting_for_hit = true
@@ -65,16 +69,21 @@ func spawn_heart():
 	if current_heart == 1:
 		heart1.show()
 		heart1.on = true
+		heart1.animp.play("pop")
 	elif current_heart == 2:
 		heart2.show()
 		heart2.on = true
+		heart2.animp.play("pop")
 	elif current_heart == 3:
 		heart3.show()
 		heart3.on = true
+		heart3.animp.play("pop")
 	elif current_heart == 4:
 		heart4.show()
 		heart4.on = true
+		heart4.animp.play("pop")
 	elif current_heart == 5:
 		heart5.show()
 		heart5.on = true
+		heart5.animp.play("pop")
 	current_heart = current_heart + 1

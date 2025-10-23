@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player.is_breaking == true:
 		if colideing == true:
+			player.hit_sfx()
 			player.get_item("torch")
 			queue_free()
 

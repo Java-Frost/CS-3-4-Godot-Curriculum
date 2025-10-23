@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=33 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -21,6 +21,16 @@
 [ext_resource type="PackedScene" uid="uid://dmtdysj617bv6" path="res://boss_health.tscn" id="14_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://qx17xpxjwvf4" path="res://final_boss.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://gsac3evc2op7" path="res://area_2d1.tscn" id="21_yc10j"]
+[ext_resource type="AudioStream" uid="uid://clvq5wco761w3" path="res://Last Fight for Freedom - Edgar Hopp.mp3" id="22_jscy8"]
+[ext_resource type="AudioStream" uid="uid://573idrthijy2" path="res://glass-shatter-3-100155.mp3" id="23_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://con1bsvuik0nv" path="res://punch-41105.mp3" id="24_y6deb"]
+[ext_resource type="AudioStream" uid="uid://c2h32tdr10sg3" path="res://simple-whoosh-382724.mp3" id="25_og1vs"]
+[ext_resource type="AudioStream" uid="uid://ba3n7xlygl8tj" path="res://drop-coin-384921.mp3" id="26_2wyq8"]
+[ext_resource type="AudioStream" uid="uid://bu7hgijp5t2ab" path="res://scripts/wooden-trunk-latch-1-183944.mp3" id="27_vxglm"]
+[ext_resource type="AudioStream" uid="uid://gtmwh5n5237r" path="res://scripts/opening-metal-door-199581.mp3" id="28_2f3dj"]
+[ext_resource type="AudioStream" uid="uid://fhnwcfrs860p" path="res://scripts/warp-306033.mp3" id="29_yq6so"]
+[ext_resource type="AudioStream" uid="uid://bwi7ivde3nxb7" path="res://data/085594_potion-35983.mp3" id="30_fv21b"]
+[ext_resource type="AudioStream" uid="uid://ccygmana6pctb" path="res://data/fireball-whoosh-2-179126.mp3" id="31_tel4y"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -103,7 +113,7 @@ position = Vector2(-183.5, 105)
 position = Vector2(187.5, -37)
 
 [node name="Door2" parent="Tilemap/StuffOnTop" instance=ExtResource("10_jbj1t")]
-position = Vector2(-232.5, -56)
+position = Vector2(-212.5, -56)
 
 [node name="Collision box" parent="Tilemap/StuffOnTop" instance=ExtResource("11_0ld40")]
 position = Vector2(-230, -183.5)
@@ -125,7 +135,7 @@ position = Vector2(-234, -461)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 unique_name_in_owner = true
-position = Vector2(-462, -265)
+position = Vector2(-462, -201)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -202,3 +212,35 @@ position = Vector2(-467, -776)
 
 [node name="Area2D2" parent="." instance=ExtResource("21_yc10j")]
 position = Vector2(-463, -602)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_jscy8")
+
+[node name="shatter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_pm3ni")
+
+[node name="punch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_y6deb")
+
+[node name="woosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_og1vs")
+
+[node name="ding" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_2wyq8")
+
+[node name="chest" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_vxglm")
+
+[node name="door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_2f3dj")
+
+[node name="warp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("29_yq6so")
+
+[node name="potion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_fv21b")
+volume_db = 24.0
+
+[node name="fire" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_tel4y")
+volume_db = 2.0

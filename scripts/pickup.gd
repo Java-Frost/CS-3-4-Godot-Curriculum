@@ -5,6 +5,8 @@
 extends Area2D
 class_name pickup
 
+@onready var main = $"."
+
 @export var color: Color
 @export var amount : int = 1
 @export var type : String = ""
@@ -32,6 +34,7 @@ func _on_body_entered(body):
 			if auto_pickup:
 				if $AnimationPlayer.has_animation("disappear"):
 					$AnimationPlayer.play("disappear")
+					main.main2.ding_sound()
 				else: queue_free()
 			else:
 				pass

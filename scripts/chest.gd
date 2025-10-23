@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var label = $Label
 @onready var player = %Player
+@onready var main = $"../../.."
 @export var type:String = "chest"
 @export var amount:int = 50
 @export var opening = false
@@ -20,6 +21,7 @@ func collect_chest() -> void:
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 	player.collect_pickup(type, amount)
+	main.ding_sound()
 	opening = true
 
 
@@ -29,6 +31,7 @@ func _on_body_entered(body):
 			if "gold_key" in body.inventory:
 				opening = true
 				print("opening!")
+				main.chest_sound()
 				body.remove_item("gold_key")
 				collect_chest()
 			else:

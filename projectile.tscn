@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl11a7eg2e0uh"]
+[gd_scene load_steps=6 format=3 uid="uid://cl11a7eg2e0uh"]
 
 [ext_resource type="Texture2D" uid="uid://c67bwbrwtbaro" path="res://S8KMWh-1.png.png" id="1_a85iw"]
 [ext_resource type="Script" uid="uid://dpnefkok6uee7" path="res://projectile.gd" id="1_qxf0c"]
+[ext_resource type="Texture2D" uid="uid://bwd62n2s4k1j5" path="res://assets/point_light.webp" id="2_dgwo2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dl81w"]
 animations = [{
@@ -17,16 +18,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5rgpn"]
 radius = 8.0
 
-[node name="projectile" type="CharacterBody2D"]
+[node name="projectile" type="CharacterBody2D" groups=["proj"]]
 script = ExtResource("1_qxf0c")
 
-[node name="projectile" type="Area2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." groups=["proj"]]
+scale = Vector2(0.335, 0.335)
+color = Color(0.295594, 0.939394, 0.985849, 1)
+shadow_enabled = true
+texture = ExtResource("2_dgwo2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectile"]
-scale = Vector2(0.38690475, 0.38690475)
+[node name="projectile" type="Area2D" parent="." groups=["proj"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="projectile" groups=["proj"]]
+scale = Vector2(0.386905, 0.386905)
 sprite_frames = SubResource("SpriteFrames_dl81w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile" groups=["proj"]]
 shape = SubResource("CircleShape2D_5rgpn")
 
 [connection signal="body_entered" from="projectile" to="." method="_on_projectile_body_entered"]

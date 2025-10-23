@@ -98,6 +98,7 @@ _data = {
 
 [node name="HealthPotion" type="Area2D"]
 script = ExtResource("1_np0hw")
+alr = null
 amount = 5
 type = "health_potion"
 label = "small"

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var player = $Player
+@onready var boss = $"../Final Boss"
+@onready var wall = $"boss walls detection"
 
 @export var speed = 300
 var target
@@ -24,11 +26,14 @@ func _physics_process(delta: float) -> void:
 func _on_projectile_body_entered(body: Node2D) -> void:
 	if body == player:
 		queue_free()
+		player.change_health(-5)
+	if body.name == "Walls":
+		queue_free()
 
 
 func _get_random_target_direction() -> Vector2:
 	var target_pos = player.position
-	var random_y_offset = randf_range(-max_offset, max_offset)
+	var random_y_offset = randf_range(-boss.max_offset, boss.max_offset)
 	var new_target_pos = target_pos + Vector2(0, random_y_offset)
 	target_direction = position.direction_to(new_target_pos)
 	return target_direction
