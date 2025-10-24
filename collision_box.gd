@@ -12,3 +12,8 @@ func _on_body_entered(body: Node2D) -> void:
 		main.start_boss_song()
 		queue_free()
 		player.set_spawn()
+
+func idk_what_to_call_these_anymore():
+	health_bar.show()
+	door2.set_is_open(false)
+	main.start_boss_song()

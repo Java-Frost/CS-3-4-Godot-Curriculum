@@ -14,6 +14,11 @@ class_name Player
 @onready var key = $"../Area2D"
 @onready var coin = $"../Tilemap/StuffOnTop/Coin"
 @onready var potion = $"../Tilemap/StuffOnTop/HealthPotion"
+@onready var cbox = $"../Tilemap/StuffOnTop/Collision box"
+@onready var health_bar = $"../UI/Boss_Health"
+@onready var door2 = $"../Tilemap/StuffOnTop/Door2"
+@onready var music_player = $"../AudioStreamPlayer2D"
+@onready var particle = $GPUParticles2D
 
 @export var checkpoint = false
 @export var is_attacking: bool = true
@@ -27,6 +32,8 @@ class_name Player
 @export var viewing_inv = true
 @export var current_slot = -1
 @export var is_breaking = false
+@export var can_dash = true
+
 
 
 
@@ -34,12 +41,15 @@ var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
+	particle.emitting = false
 	position = SpawnPoint.spawn
 	if SpawnPoint.spawn != Vector2(0,0):
 		slime.queue_free()
 		key.queue_free()
 		potion.queue_free()
 		coin.queue_free()
+		health_bar.show()
+		music_player.play()
 		coins = SpawnPoint.coins
 	#get_tree().change_scene_to_file("res://inventory.tscn")
 	label.hide()
@@ -58,6 +68,7 @@ func _physics_process(delta):
 	view_coins()
 	view_health()
 	handle_movement()
+	dash()
 
 func handle_movement():
 	# Get input direction from arrow keys
@@ -241,3 +252,17 @@ func hit_sfx():
 
 func set_spawn():
 	checkpoint = true
+
+
+func dash():
+	if Input.is_action_just_pressed("dodge"):
+		if can_dash == true:
+			move_speed = 600
+			particle.emitting = true
+			can_dash = false
+			await get_tree().create_timer(0.3).timeout
+			move_speed = 200
+			await get_tree().create_timer(0.2).timeout
+			particle.emitting = false
+			can_dash = true
+		
