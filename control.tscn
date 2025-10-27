@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd5ayqpolpnju"]
+
+[ext_resource type="Texture2D" uid="uid://dqxk402bgmxpw" path="res://scripts/New Piskel.png" id="1_0fbet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62e2m"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtu10"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee4bf"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbped"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj5cn"]
+atlas = ExtResource("1_0fbet")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iy58a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62e2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtu10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee4bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbped")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj5cn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iy58a")

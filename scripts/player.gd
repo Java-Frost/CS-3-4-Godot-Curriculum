@@ -19,6 +19,8 @@ class_name Player
 @onready var door2 = $"../Tilemap/StuffOnTop/Door2"
 @onready var music_player = $"../AudioStreamPlayer2D"
 @onready var particle = $GPUParticles2D
+@onready var particle2 = $GPUParticles2D2
+
 
 @export var checkpoint = false
 @export var is_attacking: bool = true
@@ -36,12 +38,12 @@ class_name Player
 
 
 
-
 var facing: Vector2 = Vector2.ZERO
 
 
 func _ready():
 	particle.emitting = false
+	particle2.emitting = false
 	position = SpawnPoint.spawn
 	if SpawnPoint.spawn != Vector2(0,0):
 		slime.queue_free()
@@ -56,7 +58,6 @@ func _ready():
 	label2.hide()
 	label3.hide()
 	label2.text = "Inventory"
-	print("Player is ready!")
 	# TODO: Add detailed character info display (Lesson 1)
 
 func _physics_process(delta):
@@ -99,7 +100,6 @@ func handle_sprite(direction: Vector2) -> void:
 		prefix = "idle"
 	else:
 		facing = direction
-	
 	if facing.y > 0:
 		animated_sprite.play(prefix + "_forward")
 	elif facing.y < 0:
@@ -191,12 +191,14 @@ func view_inventory():
 		if can_view_inventory == true:
 			if viewing_inv == false:
 				animated_sprite.play("idle_forward")
+				#get_tree().paused = true
 				inv.show()
 				is_attacking = true
 				can_attack = false
 				viewing_inv = true
 			elif viewing_inv == true:
 				inv.hide()
+				#get_tree().paused = false
 				is_attacking = false
 				can_attack = true
 				viewing_inv = false
@@ -220,11 +222,8 @@ func view_coins():
 
 
 func attack(direction: Vector2):
-	if direction == Vector2.ZERO: 
-		pass
-	else:
+	if direction != Vector2.ZERO:
 		facing = direction
-	
 	if Input.is_action_just_pressed("attack"):
 		if can_attack == true:
 			is_attacking = true
@@ -257,12 +256,17 @@ func set_spawn():
 func dash():
 	if Input.is_action_just_pressed("dodge"):
 		if can_dash == true:
-			move_speed = 600
-			particle.emitting = true
-			can_dash = false
-			await get_tree().create_timer(0.3).timeout
-			move_speed = 200
-			await get_tree().create_timer(0.2).timeout
-			particle.emitting = false
-			can_dash = true
+			if $"../UI/dash indicator".dashes_left > 0:
+				$"../UI/dash indicator".dash()
+				main.woosh_sound()
+				move_speed = 600
+				particle.emitting = true
+				particle2.emitting = true
+				can_dash = false
+				await get_tree().create_timer(0.3).timeout
+				move_speed = 200
+				await get_tree().create_timer(0.2).timeout
+				particle.emitting = false
+				particle2.emitting = false
+				can_dash = true
 		

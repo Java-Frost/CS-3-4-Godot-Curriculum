@@ -465,9 +465,10 @@ animations = [{
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fjrip"]
 particle_flag_disable_z = true
-gravity = Vector3(0, -150, 0)
-radial_accel_min = -12.700002
-radial_accel_max = 2.3999977
+gravity = Vector3(0, -200, 0)
+radial_accel_min = -12.7
+radial_accel_max = 2.4
+scale_max = 2.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_4x8vn")
@@ -508,10 +509,19 @@ texture = ExtResource("4_dqkch")
 [node name="Area2D" parent="." instance=ExtResource("6_tuyoq")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-1, 23)
+z_index = 1
+position = Vector2(0, 23)
 amount = 200
 texture = ExtResource("7_fjrip")
 lifetime = 0.4
-collision_base_size = 0.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_fjrip")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-3, 23)
+amount = 200
+texture = ExtResource("7_fjrip")
+lifetime = 0.4
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_fjrip")

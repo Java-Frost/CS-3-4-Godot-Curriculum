@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=36 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b6lym4hjtl2rb" path="res://inventory.tscn" id="12_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bhad5kjkjga42" path="res://merchant.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://dmtdysj617bv6" path="res://boss_health.tscn" id="14_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://bgvwj4xsjcgym" path="res://Dash.tscn" id="17_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://qx17xpxjwvf4" path="res://final_boss.tscn" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://gsac3evc2op7" path="res://area_2d1.tscn" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://clvq5wco761w3" path="res://Last Fight for Freedom - Edgar Hopp.mp3" id="22_jscy8"]
@@ -31,6 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://fhnwcfrs860p" path="res://scripts/warp-306033.mp3" id="29_yq6so"]
 [ext_resource type="AudioStream" uid="uid://bwi7ivde3nxb7" path="res://data/085594_potion-35983.mp3" id="30_fv21b"]
 [ext_resource type="AudioStream" uid="uid://ccygmana6pctb" path="res://data/fireball-whoosh-2-179126.mp3" id="31_tel4y"]
+[ext_resource type="AudioStream" uid="uid://bpgmtra1mfppl" path="res://Invisible.mp3" id="32_qkpxi"]
+[ext_resource type="AudioStream" uid="uid://6k72h1wgxys7" path="res://stick-hitting-a-dreadlock-small-thud-83297.mp3" id="33_dgi5k"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -89,7 +92,16 @@ position = Vector2(-296.5, -487.5)
 position = Vector2(-169, -487.5)
 
 [node name="Spike" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
-position = Vector2(88, 8)
+position = Vector2(-136.5, -296)
+
+[node name="Spike2" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
+position = Vector2(-328.5, -296)
+
+[node name="Spike3" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
+position = Vector2(-328.5, -472)
+
+[node name="Spike4" parent="Tilemap/StuffOnTop" instance=ExtResource("4_j0bf8")]
+position = Vector2(-136.5, -472)
 
 [node name="Torch" parent="Tilemap/StuffOnTop" instance=ExtResource("7_o6xl0")]
 position = Vector2(195, -56.5)
@@ -98,10 +110,22 @@ position = Vector2(195, -56.5)
 position = Vector2(-204.5, -56.5)
 
 [node name="HealthPotion" parent="Tilemap/StuffOnTop" instance=ExtResource("6_tefeu")]
-position = Vector2(18, 17.5)
+position = Vector2(-232.5, -182.5)
 
 [node name="Coin" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
-position = Vector2(-9.5, 26)
+position = Vector2(-264.5, -41)
+amount = 10
+label = "gold"
+
+[node name="Coin2" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
+position = Vector2(89.5, -170.5)
+amount = 10
+label = "gold"
+
+[node name="Coin3" parent="Tilemap/StuffOnTop" instance=ExtResource("5_tbgi4")]
+position = Vector2(247.5, 104)
+amount = 10
+label = "gold"
 
 [node name="Door" parent="Tilemap/StuffOnTop" instance=ExtResource("7_tipki")]
 position = Vector2(23.5, -24)
@@ -135,7 +159,6 @@ position = Vector2(-234, -461)
 
 [node name="Player" parent="." instance=ExtResource("1_2j8vx")]
 unique_name_in_owner = true
-position = Vector2(-462, -201)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -197,8 +220,14 @@ offset_top = 31.0
 offset_right = 565.0
 offset_bottom = 31.0
 
+[node name="dash indicator" parent="UI" instance=ExtResource("17_5q0nq")]
+offset_left = 1056.0
+offset_top = 96.0
+offset_right = 1056.0
+offset_bottom = 96.0
+
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
-position = Vector2(-496, 36)
+position = Vector2(-464, -23)
 move_points = Array[Vector2]([Vector2(-350, -21), Vector2(-520, -68)])
 
 [node name="Merchant" parent="." instance=ExtResource("13_trceg")]
@@ -244,3 +273,11 @@ volume_db = 24.0
 [node name="fire" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("31_tel4y")
 volume_db = 2.0
+
+[node name="torch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_dgi5k")
+volume_db = 24.0
+
+[node name="backround music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_qkpxi")
+volume_db = -20.0

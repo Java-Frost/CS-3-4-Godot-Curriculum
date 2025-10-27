@@ -11,6 +11,7 @@ func _ready() -> void:
 	player.is_attacking = false
 	player.can_attack = true
 	player.viewing_inv = false
+	#get_tree().paused = true
 
 
 func add_item_to_slot(slot_index: int, name: String):#, ammount: String):

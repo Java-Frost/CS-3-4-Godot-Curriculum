@@ -13,15 +13,18 @@ class_name GameWorld
 @onready var warp = $warp
 @onready var pot = $potion
 @onready var fire = $fire
+@onready var music = $"backround music"
+@onready var torch = $torch
 # Test objects for character methods
 @onready var spike = $Spike
 @onready var health_potion = $HealthPotion
 
 func _ready():
-	pass
+	music_play()
 
 func start_boss_song():
 	music_player.play()
+	music.stop()
 
 func shatter_sound():
 	shatter.play()
@@ -49,6 +52,12 @@ func potion_sound():
 
 func fire_woosh():
 	fire.play()
+
+func music_play():
+	music.play()
+
+func torch_sound():
+	torch.play()
 # TODO: Add game management methods here (Future lessons)
 # - spawn_enemy()
 # - handle_combat()  

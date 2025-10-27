@@ -116,6 +116,7 @@ func use_item():
 		var torch = load("res://scenes/torch.tscn").instantiate()
 		stuff.add_child(torch)
 		torch.global_position = player.global_position
+		$"../../..".torch_sound()
 		inv.hide()
 		player.remove_item_silent("torch")
 		player.is_attacking = false

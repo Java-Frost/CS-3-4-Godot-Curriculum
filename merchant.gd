@@ -23,6 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		label.hide()
 		body.can_view_inventory = false
 		inv.hide()
+		$"../UI/dash indicator".hide()
 		menu.show()
 		body.hide()
 		#get_tree().change_scene_to_file("res://menu.tscn")
@@ -33,6 +34,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _unbind_player(body):
 	body.is_attacking = false
 	body.show()
+	$"../UI/dash indicator".show()
 	body.can_attack = true
 	body.can_view_inventory = true
 

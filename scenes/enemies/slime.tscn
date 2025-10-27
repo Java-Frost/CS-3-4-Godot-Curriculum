@@ -92,3 +92,4 @@ shape = SubResource("CircleShape2D_b58ev")
 [connection signal="body_exited" from="Detection Radius" to="." method="_on_detection_radius_body_exited"]
 [connection signal="body_entered" from="Damage Radius" to="." method="_on_damage_radius_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
