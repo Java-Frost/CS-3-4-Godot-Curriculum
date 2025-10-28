@@ -20,6 +20,8 @@ class_name Player
 @onready var music_player = $"../AudioStreamPlayer2D"
 @onready var particle = $GPUParticles2D
 @onready var particle2 = $GPUParticles2D2
+@onready var ws = $"../UI/Winscreen"
+@onready var boss = $"../Final Boss"
 
 
 @export var checkpoint = false
@@ -190,13 +192,14 @@ func view_inventory():
 	if Input.is_action_just_pressed("Inventory"):
 		if can_view_inventory == true:
 			if viewing_inv == false:
+				Engine.time_scale = 0.1
 				animated_sprite.play("idle_forward")
-				#get_tree().paused = true
 				inv.show()
 				is_attacking = true
 				can_attack = false
 				viewing_inv = true
 			elif viewing_inv == true:
+				Engine.time_scale = 1
 				inv.hide()
 				#get_tree().paused = false
 				is_attacking = false
@@ -270,3 +273,11 @@ func dash():
 				particle2.emitting = false
 				can_dash = true
 		
+
+
+func fin():
+	await get_tree().create_timer(1.6).timeout
+	boss.queue_free()
+	main.stop_sound()
+	ws.show()
+	main.vic_play()

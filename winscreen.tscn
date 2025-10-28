@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfbuxmese4a5r"]
+
+[ext_resource type="Script" uid="uid://b1yjgg4dvwgh" path="res://winscreen.gd" id="1_h3yos"]
+[ext_resource type="Texture2D" uid="uid://cwysg3g50ooax" path="res://assets/free-2d-top-down-pixel-dungeon-asset-pack/cooltext494919795113993.png" id="2_ehxyi"]
+
+[node name="Winscreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_right = -201.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h3yos")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_right = 937.0
+offset_bottom = 505.0
+color = Color(0.27569968, 0.27569968, 0.27569965, 1)
+
+[node name="Cooltext494919795113993" type="Sprite2D" parent="."]
+position = Vector2(575.99994, 86)
+scale = Vector2(1.9431818, 1.9431819)
+texture = ExtResource("2_ehxyi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 189.0
+offset_right = 768.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 56
+text = "Final Coins: 10"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 285.0
+offset_right = 863.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 56
+text = "Remaining Health: 10"
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 543.0
+offset_top = 397.0
+offset_right = 624.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 56
+text = "GG"

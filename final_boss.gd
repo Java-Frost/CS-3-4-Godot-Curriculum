@@ -1,9 +1,11 @@
 extends StaticBody2D
 
 @onready var anim = $head
+@onready var anims = $AnimationPlayer
 @onready var player = %Player
 @onready var main = $".."
 @onready var timer = $Timer
+@onready var ws = $"../UI/Winscreen"
 
 @onready var heart1 =$"../Tilemap/StuffOnTop/heart"
 @onready var heart2 =$"../Tilemap/StuffOnTop/heart2"
@@ -11,7 +13,7 @@ extends StaticBody2D
 @onready var heart4 =$"../Tilemap/StuffOnTop/heart4"
 @onready var heart5 =$"../Tilemap/StuffOnTop/heart5"
 
-
+@export var cant_shoot = false
 @export var can_attack = false
 @export var coliding = false
 @export var current_heart = 1
@@ -30,17 +32,21 @@ func _process(delta: float) -> void:
 	take_damage()
 
 func die():
-	queue_free()
+	cant_shoot = true
+	anims.play("die1")
+	main.woosh.stop()
+	player.fin()
 
 func increase_speed():
 	timer.wait_time = timer.wait_time - 0.15
 	max_offset = max_offset + 20
 
 func attack():
-	main.fire_woosh()
-	var ball = load("res://projectile.tscn").instantiate()
-	ball.position = position
-	main.add_child(ball)
+	if cant_shoot == false:
+		main.fire_woosh()
+		var ball = load("res://projectile.tscn").instantiate()
+		ball.position = position
+		main.add_child(ball)
 
 func _on_timer_timeout() -> void:
 	if can_attack == true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cpcjxr26k8tgw"]
+[gd_scene load_steps=38 format=4 uid="uid://cpcjxr26k8tgw"]
 
 [ext_resource type="PackedScene" uid="uid://cqvpxnx2pwqhk" path="res://scenes/player.tscn" id="1_2j8vx"]
 [ext_resource type="Script" uid="uid://bnk74kv0ariww" path="res://scripts/game_world.gd" id="2_3k9wy"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dmtdysj617bv6" path="res://boss_health.tscn" id="14_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bgvwj4xsjcgym" path="res://Dash.tscn" id="17_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://qx17xpxjwvf4" path="res://final_boss.tscn" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://bfbuxmese4a5r" path="res://winscreen.tscn" id="18_j8jky"]
 [ext_resource type="PackedScene" uid="uid://gsac3evc2op7" path="res://area_2d1.tscn" id="21_yc10j"]
 [ext_resource type="AudioStream" uid="uid://clvq5wco761w3" path="res://Last Fight for Freedom - Edgar Hopp.mp3" id="22_jscy8"]
 [ext_resource type="AudioStream" uid="uid://573idrthijy2" path="res://glass-shatter-3-100155.mp3" id="23_pm3ni"]
@@ -34,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://ccygmana6pctb" path="res://data/fireball-whoosh-2-179126.mp3" id="31_tel4y"]
 [ext_resource type="AudioStream" uid="uid://bpgmtra1mfppl" path="res://Invisible.mp3" id="32_qkpxi"]
 [ext_resource type="AudioStream" uid="uid://6k72h1wgxys7" path="res://stick-hitting-a-dreadlock-small-thud-83297.mp3" id="33_dgi5k"]
+[ext_resource type="AudioStream" uid="uid://bf6c831qb7lyx" path="res://11l-victory-1749704552668-358772.mp3" id="36_kmb1v"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_energy_multiplier = 0.1
@@ -137,7 +139,7 @@ position = Vector2(-183.5, 105)
 position = Vector2(187.5, -37)
 
 [node name="Door2" parent="Tilemap/StuffOnTop" instance=ExtResource("10_jbj1t")]
-position = Vector2(-212.5, -56)
+position = Vector2(-232.5, -56)
 
 [node name="Collision box" parent="Tilemap/StuffOnTop" instance=ExtResource("11_0ld40")]
 position = Vector2(-230, -183.5)
@@ -226,6 +228,12 @@ offset_top = 96.0
 offset_right = 1056.0
 offset_bottom = 96.0
 
+[node name="Winscreen" parent="UI" instance=ExtResource("18_j8jky")]
+visible = false
+offset_left = -328.0
+offset_right = -328.0
+scale = Vector2(1.59, 1.59)
+
 [node name="slime" parent="." instance=ExtResource("11_ya4ey")]
 position = Vector2(-464, -23)
 move_points = Array[Vector2]([Vector2(-350, -21), Vector2(-520, -68)])
@@ -280,4 +288,7 @@ volume_db = 24.0
 
 [node name="backround music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("32_qkpxi")
-volume_db = -20.0
+volume_db = -15.0
+
+[node name="victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_kmb1v")

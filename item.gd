@@ -90,6 +90,7 @@ func find_closest_panel():
 
 func use_item():
 	if anim.animation == "blue_flask":
+		Engine.time_scale = 1
 		$AnimationPlayer.play("disappear")
 		await get_tree().create_timer(0.6).timeout
 		light.hide()
@@ -101,6 +102,7 @@ func use_item():
 		player.viewing_inv = false
 		queue_free()
 	elif anim.animation == "red_flask":
+		Engine.time_scale = 1
 		$AnimationPlayer.play("disappear")
 		await get_tree().create_timer(0.6).timeout
 		player.change_health(20)
@@ -112,6 +114,7 @@ func use_item():
 		player.viewing_inv = false
 		queue_free()
 	elif anim.animation == "torch":
+		Engine.time_scale = 1
 		queue_free()
 		var torch = load("res://scenes/torch.tscn").instantiate()
 		stuff.add_child(torch)
